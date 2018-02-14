@@ -5,6 +5,7 @@ import { FlightSearchComponent } from './flight/flight-search/flight-search.comp
 import { ReactiveFlightSearchComponent } from './flight/reactive-flight-search/reactive-flight-search.component';
 import { FlightTypeaheadComponent } from './flight/flight-typehead/flight-typeahead.component';
 import { PassengerBookingComponent } from './passenger/passenger-booking/passenger-booking.component';
+import { AuthGuard } from './shared/auth/auth.guard';
 
 const APP_ROUTES: Routes = [
     {
@@ -18,7 +19,8 @@ const APP_ROUTES: Routes = [
     },
     {
         path: 'flight-search',
-        component: FlightSearchComponent
+        component: FlightSearchComponent,
+        canActivate: [ AuthGuard ]
     },
     {
         path: 'reactive-flight-search',

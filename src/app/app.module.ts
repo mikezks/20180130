@@ -12,24 +12,33 @@ import { FlightModule } from './flight/flight.module';
 import { AppRouterModule } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { PassengerModule } from './passenger/passenger.module';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { SharedModule } from './shared/shared.module';
+import { HttpModule } from '@angular/http';
+import { AuthGuard } from './shared/auth/auth.guard';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
     FlightModule,
     AppRouterModule,
-    PassengerModule
+    PassengerModule,
+    OAuthModule.forRoot(),
+    SharedModule.forRoot(),
+
   ],
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
   ],
   providers: [
-    { provide: BASE_URL, useValue: 'http://www.angular.at' }
+    { provide: BASE_URL, useValue: 'http://www.angular.at' },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
