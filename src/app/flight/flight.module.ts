@@ -8,6 +8,7 @@ import { FlightService } from './services/flight.service';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { ReactiveFlightSearchComponent } from './reactive-flight-search/reactive-flight-search.component';
 import { FlightTypeaheadComponent } from './flight-typehead/flight-typeahead.component';
+import { FlightMasterdataComponent } from './flight-masterdata/flight-masterdata.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { FlightTypeaheadComponent } from './flight-typehead/flight-typeahead.com
     FlightSearchComponent,
     FlightCardComponent,
     ReactiveFlightSearchComponent,
-    FlightTypeaheadComponent
+    FlightTypeaheadComponent,
+    FlightMasterdataComponent
 ],
   providers: [
     FlightService
@@ -28,7 +30,8 @@ import { FlightTypeaheadComponent } from './flight-typehead/flight-typeahead.com
   exports: [
     FlightSearchComponent,
     ReactiveFlightSearchComponent,
-    FlightTypeaheadComponent
+    FlightTypeaheadComponent,
+    FlightMasterdataComponent
   ]
 })
 export class FlightModule { }

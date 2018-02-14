@@ -11,6 +11,7 @@ import { BASE_URL } from './app.token';
 import { FlightModule } from './flight/flight.module';
 import { AppRouterModule } from './app.routes';
 import { HomeComponent } from './home/home.component';
+import { PassengerModule } from './passenger/passenger.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     HttpClientModule,
     FlightModule,
-    AppRouterModule
+    AppRouterModule,
+    PassengerModule
   ],
   declarations: [
     AppComponent,

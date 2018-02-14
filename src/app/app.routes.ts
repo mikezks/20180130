@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { FlightSearchComponent } from './flight/flight-search/flight-search.component';
 import { ReactiveFlightSearchComponent } from './flight/reactive-flight-search/reactive-flight-search.component';
 import { FlightTypeaheadComponent } from './flight/flight-typehead/flight-typeahead.component';
+import { PassengerBookingComponent } from './passenger/passenger-booking/passenger-booking.component';
 
 const APP_ROUTES: Routes = [
     {
@@ -26,6 +27,10 @@ const APP_ROUTES: Routes = [
     {
         path: 'flight-typeahead',
         component: FlightTypeaheadComponent,
+    },
+    {
+        path: 'passenger-booking',
+        component: PassengerBookingComponent,
     },
     {
         path: '**',

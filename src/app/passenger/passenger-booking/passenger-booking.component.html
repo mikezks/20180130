@@ -1,0 +1,83 @@
+<div class="card">
+  
+  <div class="header">
+      <h2 class="title">Passenger Flight Booking</h2>
+      <br />
+      <h4 class="title">Step {{step}}</h4>
+      <br />
+  </div>
+  <div class="content">
+      <form
+        [formGroup]="passengerBookingForm"
+        novalidate
+        (ngSubmit)="save(passengerBookingForm)">
+        <div class="form-group" *ngIf="step === 1">
+          <passenger-masterdata
+            [group]="passengerBookingForm.controls.passenger">
+          </passenger-masterdata>
+        </div>
+
+        <div class="form-group" *ngIf="step === 2">
+          <div formArrayName="flights">
+            <div
+              *ngFor="let flight of passengerBookingForm.controls.flights.controls; let i=index"
+              class="panel panel-default">
+              <div class="panel-heading">
+                <span>Booking {{i + 1}}</span>
+                <a
+                  class="pull-right"
+                  *ngIf="passengerBookingForm.controls.flights.controls.length > 1"
+                  (click)="delFlightBooking(i)"
+                  style="cursor: pointer">delete</a>
+              </div>
+              <div class="panel-body" [formGroupName]="i">
+                <flight-masterdata
+                  [group]="passengerBookingForm.controls.flights.controls[i]">
+                </flight-masterdata>
+              </div>
+            </div>
+          </div>
+          <div class="margin-20">
+            <a
+              (click)="addFlightBooking()"
+              style="cursor: pointer">
+              Add Flight Booking +
+            </a>
+          </div>
+        </div>
+
+        <br />
+        <div class="margin-20">
+          <button
+            (click)="step = 1"
+            class="btn btn-primary pull-left"
+            *ngIf="step > 1">
+            Back
+          </button>
+        </div>
+        <div class="margin-20">
+          <button
+            (click)="step = 2"
+            class="btn btn-primary pull-right"
+            *ngIf="step < 2"
+            [disabled]="passengerBookingForm.invalid">
+            Next
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary pull-right"
+            *ngIf="step === 2"
+            [disabled]="passengerBookingForm.invalid">
+            Submit
+          </button>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="margin-20">
+          <label>PassengerBookingForm details:</label>
+          <pre>Form valid: {{passengerBookingForm.valid | json}}</pre>
+          <pre>Form value: <br>{{passengerBookingForm.value | json}}</pre>
+        </div>
+      </form>
+  </div>
+</div>
