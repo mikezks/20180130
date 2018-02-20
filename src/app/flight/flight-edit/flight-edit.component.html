@@ -1,0 +1,53 @@
+<div *ngIf="showWarning" class="alert alert-warning" style="position: absolute; top:100px; left:20px; z-index:100">
+  <div>
+    Daten wurden nicht gespeichert! Trotzdem Maske verlassen?
+  </div>
+  <p>&nbsp;</p>
+  <div>
+    <a (click)="decide(true)" class="btn btn-danger">Yes</a>
+    <a (click)="decide(false)" class="btn btn-default">No</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="header">
+    <h1 class="title">Flight Edit</h1>
+  </div>
+
+  <div class="content">
+    <p>Id: {{id}}</p>
+    <p>ShowDetails: {{showDetails}}</p>
+
+    <form *ngIf="flight">
+
+      <div class="form-group">
+          <label>Id:</label>
+          <input [(ngModel)]="flight.id" name="id" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Date:</label>
+        <input [(ngModel)]="flight.date" name="date" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>From:</label>
+        <input [(ngModel)]="flight.from" name="from" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>To:</label>
+        <input [(ngModel)]="flight.to" name="to" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-default" (click)="save()">Save</button>
+        <button class="btn btn-default" (click)="delete()">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+    <div class="content">
+        <pre>{{ flight | json }}</pre>
+    </div>
+</div>

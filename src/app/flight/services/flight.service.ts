@@ -43,4 +43,12 @@ export class FlightService {
       .get<Flight[]>(url, { params, headers });
   }
 
+  save(f: Flight): Observable<Flight> {
+      const url = this.url + '/api/flight';
+
+      const headers = new HttpHeaders()
+                        .set('Accept', 'application/json');
+
+      return this.http.post<Flight>(url, f, { headers});
+  }
 }

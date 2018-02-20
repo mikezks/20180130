@@ -17,13 +17,13 @@
         </li>
 
         <li routerLinkActive="active">
-            <a routerLink="/flight-search">
+            <a routerLink="/flight/flight-search">
                 <i class="ti-arrow-top-right"></i>
                 <p>Flights</p>
             </a>
         </li>
 
-        <li routerLinkActive="active">
+<!--         <li routerLinkActive="active">
             <a routerLink="/reactive-flight-search">
                 <i class="ti-arrow-top-right"></i>
                 <p>Reactive Flights</p>
@@ -35,27 +35,18 @@
                 <i class="ti-arrow-top-right"></i>
                 <p>Flights Typeahead</p>
             </a>
-        </li>
+        </li> -->
         <li routerLinkActive="active">
             <a routerLink="/passenger-booking">
                 <i class="ti-user"></i>
                 <p>Passenger Booking</p>
             </a>
         </li>
-            <!--
-            <li routerLinkActive="active">
-            <a>
+        <li routerLinkActive="active">
+            <a [routerLink]="[{outlets: {aux: 'basket' }}]">
                 <i class="ti-shopping-cart"></i>
                 <p>Basket</p>
             </a>
-            </li>
-            <li routerLinkActive="active">
-            <a>
-                <i class="ti-close"></i>
-                <p>Hide Basket</p>
-            </a>
-            </li>
-        -->
-        
+        </li>
     </ul>
 </div>

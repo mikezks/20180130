@@ -16,28 +16,32 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { SharedModule } from './shared/shared.module';
 import { HttpModule } from '@angular/http';
 import { AuthGuard } from './shared/auth/auth.guard';
+import { BasketComponent } from './basket/basket.component';
+import { FlightEventService } from './basket/flight-event.service';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
-    HttpModule,
-    FlightModule,
-    AppRouterModule,
+    HttpClientModule, // <-- New Http-Modul, before Angular 4.3
+    HttpModule, // <-- Old HTTP-Moduls, Angular 4.3 and later
+    // FlightModule,	// <-- This would prevent lazy loading
     PassengerModule,
+    AppRouterModule,
     OAuthModule.forRoot(),
     SharedModule.forRoot(),
-
   ],
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
     HomeComponent,
+    BasketComponent,
   ],
   providers: [
     { provide: BASE_URL, useValue: 'http://www.angular.at' },
+    //{ provide: BASE_URL, useValue: 'http://localhost:4200' },
+    FlightEventService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

@@ -8,6 +8,8 @@ import { RoundTripValidationDirective } from './validation/round-trip-validation
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
+import { CanDeactivateGuard } from './deactivation/can-deactivate.guard';
+import { CustomPreloadingStrategy } from './preloading/custom-preloading-strategy';
 
 @NgModule({
   imports: [
@@ -19,7 +21,10 @@ import { AuthService } from './auth/auth.service';
     RoundTripValidationDirective,
     AsyncCityValidationDirective
   ],
-  providers: [],
+  providers: [
+    CanDeactivateGuard,
+    CustomPreloadingStrategy
+  ],
   exports: [
     CityPipe,
     CityValidationDirective,
@@ -28,11 +33,10 @@ import { AuthService } from './auth/auth.service';
   ]
 })
 export class SharedModule {
-
   static forChild(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: []
+      providers: [ /* Keine Provider hier, siehe forRoot */ ]
     }
   }
 
@@ -45,7 +49,7 @@ export class SharedModule {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptor,
           multi: true,
-        }
+        } // Eventuelle andere Services hier
       ]
     }
   }

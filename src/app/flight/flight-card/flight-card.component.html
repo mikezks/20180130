@@ -21,6 +21,11 @@
                 (click)="deselect()"
             >Remove</button>
 
+            <button
+                class="btn btn-default"
+	            [routerLink]="['../flight-edit', item.id, {showDetails: true}]">
+              Edit
+        </button>
         </p>
 
 </div>

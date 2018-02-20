@@ -1,0 +1,27 @@
+<div class="gray-bg" style="z-index:999"></div>
+
+<div class="flight-history" style="z-index:1000">
+  <div class="flight-history-inside">
+    <div class="card">
+      <div class="header">
+        <h3>Your Basket
+          <a [routerLink]="['/', {outlets: {aux: null }}]">
+            <small>
+              <i class="ti-close"></i>
+            </small>
+          </a>
+        </h3>
+      </div>
+      <div class="content">
+        <p>The latest 3 selected flights:</p>        
+        <ul class="list-group">
+
+          <li class="list-group-item" *ngFor="let f of flights">
+            <p>{{f.from}} - {{f.to}}: ID {{f.id}}</p>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

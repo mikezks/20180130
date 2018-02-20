@@ -4,16 +4,17 @@ import { PassengerBookingComponent } from './passenger-booking/passenger-booking
 import { PassengerMasterdataComponent } from './passenger-masterdata/passenger-masterdata.component';
 import { FlightModule } from '../flight/flight.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlightMasterdataComponent } from './flight-masterdata/flight-masterdata.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FlightModule,
     ReactiveFormsModule
   ],
   declarations: [
     PassengerBookingComponent,
-    PassengerMasterdataComponent
+    PassengerMasterdataComponent,
+    FlightMasterdataComponent
   ]
 })
 export class PassengerModule { }

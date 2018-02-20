@@ -5,8 +5,18 @@
   <div class="main-panel">
       <navbar-cmp></navbar-cmp>
       <div class="content">
-          <router-outlet></router-outlet>
+        <!-- Existing outlet -->
+        <router-outlet></router-outlet>
+        
+        <!-- New additional outlet -->	
+        <router-outlet name="aux"></router-outlet>
       </div>
   </div>
 </div>
-<!-- Manfred war hier -->
+
+<div style="z-index: 50" class="loading-indicator" *ngIf="showLoadingIndicator">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
