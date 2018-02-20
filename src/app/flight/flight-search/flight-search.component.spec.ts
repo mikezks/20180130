@@ -1,25 +1,46 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { FlightSearchComponent } from './flight-search.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FlightService } from '../services/flight.service';
+import { FlightEventService } from '../../basket/flight-event.service';
+import { Flight } from '../../entities/flight';
+import { Observable } from 'rxjs/Observable';
 
-describe('FlightSearchComponent', () => {
-  let component: FlightSearchComponent;
-  let fixture: ComponentFixture<FlightSearchComponent>;
+let fixture: ComponentFixture<FlightSearchComponent>;
+const flightServiceStub = {
+    flights: [],
+    find: () => {
+    }
+};
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FlightSearchComponent ]
-    })
-    .compileComponents();
-  }));
+const flightEventServiceStub = {
+    flightSelected: undefined
+};
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FlightSearchComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+describe('flight-search.component', () => {
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    beforeEach(async(() => {
+
+        TestBed.configureTestingModule({
+            declarations: [FlightSearchComponent],
+            providers: [
+                { provide: FlightService, useValue: flightServiceStub },
+                { provide: FlightEventService, useValue: flightEventServiceStub },
+            ],
+            imports: [
+                FormsModule
+            ],
+            schemas: [NO_ERRORS_SCHEMA]
+        }).compileComponents();
+
+    }));
+
+    it('should not have any flights defined initially', () => {
+        fixture = TestBed.createComponent(FlightSearchComponent);
+        const comp = fixture.componentInstance;
+
+        expect(comp.flights).toBeUndefined();
+    });
 });

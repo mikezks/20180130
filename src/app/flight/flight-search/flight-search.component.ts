@@ -35,7 +35,7 @@ export class FlightSearchComponent implements OnInit {
   }
 
   selectFlightsForBasket() {
-    for (let prop in this.basket) {
+    for (const prop in this.basket) {
       if (this.basket[prop]) {
         const flightForBasket = this.flights.find(f => f.id.toString() === prop);
         if (flightForBasket) {

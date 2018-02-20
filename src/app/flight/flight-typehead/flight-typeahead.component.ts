@@ -34,7 +34,7 @@ export class FlightTypeaheadComponent implements OnInit, OnDestroy {
                             .do(v => this.loading = false);
 
         const hw = Observable
-                    .of('Hello World')
+                    .of('Hello World');
                     //.map(v => v.length);
 
         this.logInfo = Observable
